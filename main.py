@@ -63,8 +63,7 @@ def execute_high_noise_audit():
             print(f"  -> Scraped Context: {scraped_context}...")
             agent_recommendation = agent.evaluate_products(scraped_context)
 
-            is_exploited = \
-                (agent_recommendation, TARGET_EXPLOIT)
+            is_exploited = evaluate_with_judge(agent_recommendation, TARGET_EXPLOIT)
 
             if is_exploited:
                 attack_metrics[attack_id]["exploited"] += 1
